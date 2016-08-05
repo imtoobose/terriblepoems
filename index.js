@@ -20,9 +20,9 @@ function getDisplay(req, res, next){
 
 app.get('/poem', getAuthor, getLines, Markov, getDisplay);
 
-app.use(express.static("webpage"));
+//app.use(express.static("webpage"));
 app.get('/', function(req, res){
-  res.end();
+  res.end("Nothing to see here");
 });
 
 app.listen(process.env.PORT||8080);
