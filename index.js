@@ -12,7 +12,7 @@ var
     getLines    = require('./public/getLines');
 
 function getDisplay(req, res, next){
-    //res.setHead({"responseType":"GET"});
+  console.log(res.locals.auth);
     res.jsonp({
       "poem": res.locals.output,
       "author": res.locals.auth

@@ -1,6 +1,5 @@
 function getPoem(){
   qwest.setDefaultDataType('json');
-
   qwest.get("http://localhost:8080/poem")
   .then(function(xhr, response){
     var data= JSON.parse(xhr.responseText);
@@ -18,6 +17,7 @@ function printData(data){
     if(data.poem[i]=='' || data.poem[i]==" " || (data.poem[i].length==1 && re.test(data.poem[i]))){
       continue;
     }
+
     else{
       var ss = (data.poem[i].trim().split(""));
       ss[0]  = ss[0].toUpperCase();
