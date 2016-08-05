@@ -6,25 +6,39 @@ function getPoem(){
     printData(data);
   })
   .catch(function(e, xhr, response){
-    document.getElementById.innerHTML="",
-    document.getElementById.outerHTML="";
+    document.getElementById("poem").innerHTML="",
     document.getElementById("poem").innerHTML= "Looks like an error occurred :( Try again!";
   })
 }
 
 function printData(data){
   document.getElementById("poem").innerHTML="";
-  var re = /a|the|an|of/gi;
+  var ol = "";
   for(var i in data.poem){
-    if(data.poem[i]=='' || data.poem[i]==" " || (data.poem[i].length==1 && re.test(data.poem[i]))){
+    data.poem[i]= data.poem[i].trim();
+    if(data.poem[i]=='' || data.poem[i]==" " || data.poem[i] == "the"|| data.poem[i]=="a" || data.poem[i]=="an"){
       continue;
     }
 
     else{
-      var ss = (data.poem[i].trim().split(""));
+      if(data.poem[i].split(" ").length==1){
+        ol = data.poem[i];
+        continue;
+      }
+      else{
+        ol = "";
+      }
+
+      var ss = (data.poem[i].split(""));
       ss[0]  = ss[0].toUpperCase();
-      ss.push(",");
-      ss     = ss.join("");
+      if(i!==data.poem.length)
+        ss.push(",");
+      else
+        ss.push(".");
+      ss = ss.join("");
+      if(ol!=="" && ss.indexOf(ol)==-1){
+        ss = ol.concat(ss);
+      }
       document.getElementById("poem").insertAdjacentHTML( "afterend" ,"<p>" + ss +"</p>");
     }
   }

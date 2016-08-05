@@ -5,21 +5,23 @@ function Markov(req, res, next){
     return;
   }
 
-  var seed = null,
-  diclength=0,
-  seedarr=[];
-  var vnext="";
-  var dic = {};
+  var 
+  seed      = null,
+  diclength = 0,
+  seedarr   = [],
+  vnext     = "",
+  dic       = {};
   
   for (var i =0; i<arr.length; i++){
     var innerarr= arr[i].lines;
     for(var j =0; j<innerarr.length; j++){
-      var sentence= innerarr[j].replace(/[^a-z0-9\s+]+/gi, '').split(' ');
+      var sentence= innerarr[j].replace(/[^a-z\s+]+/gi, '').split(' ');
+      sentence[0]= sentence[0].toLowerCase();
       for(var k = 0 ; k<sentence.length-1; k++){
-          sentence[k]= sentence[k].toLowerCase();
+          sentence[k+1]= sentence[k+1].toLowerCase();
           seedarr.push(sentence[k]);
-
-          if(vnext!=""){
+          
+          if(vnext!="" && vnext!==sentence[k]){
             if(dic[vnext]){
               dic[vnext].push(sentence[k]);
             }
@@ -29,12 +31,14 @@ function Markov(req, res, next){
             }
           }
 
-          if(dic[sentence[k]]){
+          if(dic[sentence[k]] && dic[sentence[k]]!==sentence[k+1]){
             dic[sentence[k]].push(sentence[k+1])
           }
           else{
-            diclength+=1;
-            dic[sentence[k]]= [sentence[k+1]];
+            if(dic[sentence[k]]!==sentence[k+1]){
+              diclength+=1;
+              dic[sentence[k]]= [sentence[k+1]];
+            }
           }
       }
       vnext = dic[sentence[sentence.length-1]];
@@ -58,19 +62,17 @@ function Markov(req, res, next){
             seed = seedarr[Math.floor(Math.random()*seedarr.length)];
             break;
           }
-
           output[i]= output[i].concat((seed+" "));
           count+=1;
           llcount+=1;
 
-          if(count===150) {
+          if(count===100) {
             breakall= true;
             break;
           }
           if(llcount==10){
             break;
           }
-
         }
         else{
           seed = seedarr[Math.floor(Math.random()*seedarr.length)];
