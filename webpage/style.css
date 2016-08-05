@@ -3,6 +3,27 @@ body {
   color: #444554;
   font-family: "Open Sans Condensed"; }
 
+div.upblur {
+  display: block;
+  height: 15%;
+  width: 100%;
+  background: linear-gradient(0deg, transparent, #F9FBB2 70%);
+  position: fixed;
+  top: 0%;
+  opacity: 1;
+  pointer-events: none;
+  visibility: hidden; }
+
+div.blurfoot {
+  display: block;
+  height: 25%;
+  width: 100%;
+  background: linear-gradient(0deg, #F9FBB2 30%, transparent);
+  position: fixed;
+  bottom: 0%;
+  opacity: 1;
+  pointer-events: none; }
+
 .header {
   font-weight: 700;
   text-align: center;
@@ -13,9 +34,9 @@ body {
   display: block;
   text-align: center;
   padding: 0;
-  height: 60%;
   margin: 0 auto;
-  font-size: 1.4em; }
+  font-size: 1.4em;
+  padding-bottom: 10%; }
   .poem p.poemline {
     display: block;
     text-align: center; }
@@ -26,5 +47,8 @@ body {
       padding-right: 5px; }
       .poem p.poemline span.innertext:hover {
         background: #F4D35E; }
+
+p:last-child {
+  margin-bottom: 20px; }
 
 /*# sourceMappingURL=style.css.map */

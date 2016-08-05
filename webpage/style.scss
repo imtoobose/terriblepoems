@@ -7,6 +7,29 @@ body{
   font-family: $font;
 }
 
+div.upblur{
+  display:block;
+  height:15%;
+  width:100%;
+  background:linear-gradient(0deg, hsla(0,0,0,0), $back 70%);
+  position:fixed;
+  top: 0%;
+  opacity: 1;
+  pointer-events:none;
+  visibility: hidden;
+}
+
+div.blurfoot{
+  display:block;
+  height:25%;
+  width:100%;
+  background:linear-gradient(0deg, $back 30%, hsla(0,0,0,0));
+  position:fixed;
+  bottom: 0%;
+  opacity: 1;
+  pointer-events:none;
+}
+
 .header{
   font-weight: 700;
   text-align: center;
@@ -18,10 +41,9 @@ body{
   display:block;
   text-align: center;
   padding:0;
-  height: 60%;
   margin:0 auto;
   font-size: 1.4em;
-
+  padding-bottom: 10%;
   & p.poemline{
     display:block;
     text-align:center;
@@ -35,4 +57,8 @@ body{
       }
     }
   }
+}
+
+p:last-child{
+  margin-bottom: 20px;
 }

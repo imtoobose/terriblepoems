@@ -66,7 +66,7 @@ function Markov(req, res, next){
           count+=1;
           llcount+=1;
 
-          if(count===100) {
+          if(count===400) {
             breakall= true;
             break;
           }

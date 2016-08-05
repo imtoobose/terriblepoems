@@ -51,4 +51,23 @@ function printData(data){
   else{
     document.getElementById("poem").innerHTML="An error occurred";
   }
+
+  function checkVisible(elm) {
+    var rect = elm.getBoundingClientRect();
+    var viewHeight = Math.max(document.documentElement.clientHeight, window.innerHeight);
+    return !(rect.bottom < 0 || rect.top - viewHeight >= 0);
+  }
+
+  var tit= document.getElementById("header-title");
+
+  window.onscroll = function() {
+    var upblur= document.getElementById("upblur");
+    if(checkVisible(tit)){
+      upblur.style.visibility="hidden";
+    }
+    else{
+      upblur.style.visibility="visible";
+    }
+  };
+
 }).call(this);
