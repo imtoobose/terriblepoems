@@ -1,0 +1,23 @@
+{
+  "name": "Markov's Poems",
+  "version": "1.0.0",
+  "description": "Return a random poem with Markov's Chains",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  
+  "author": "Saumitra Bose",
+  "license": "MIT",
+  "devDependencies": {
+    "express": "^4.14.0",
+    "pug": "^2.0.0-beta4",
+    "request": "^2.74.0"
+  },
+  "dependencies": {
+    "bl": "^1.1.2",
+    "through2-map": "^2.0.0",
+    "request": "^2.74.0",
+    "express": "^4.14.0"
+  }
+}
