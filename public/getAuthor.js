@@ -3,7 +3,6 @@ var fs = require('fs'),
 
 
 function getAuthor(req, res, next){
-  console.log("getting author");
   fs.createReadStream('./public/authorsdb.txt')
     .pipe(bl(function(err, data){
       if(!err){
@@ -11,7 +10,6 @@ function getAuthor(req, res, next){
             randauth = (auths[Math.floor(Math.random()*auths.length)]);           
         randauth = randauth.slice(1, randauth.length-1);
         res.locals.auth = randauth;
-        console.log(res.locals.auth);
         next();
       }
       else res.end(JSON.stringify({"error":"Failed to fetch author data"}));
