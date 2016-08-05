@@ -6,6 +6,7 @@ function getPoem(){
     printData(data);
   })
   .catch(function(e, xhr, response){
+    console.log(e);
     document.getElementById("poem").innerHTML="",
     document.getElementById("poem").innerHTML= "Looks like an error occurred :( Try again!";
   })
@@ -13,6 +14,7 @@ function getPoem(){
 
 function printData(data){
   document.getElementById("poem").innerHTML="";
+  document.getElementById("header-title").innerHTML="From the words of <span class='authorname'>"+data.author+"</span>";
   var ol = "";
   for(var i in data.poem){
     data.poem[i]= data.poem[i].trim();
@@ -31,15 +33,12 @@ function printData(data){
 
       var ss = (data.poem[i].split(""));
       ss[0]  = ss[0].toUpperCase();
-      if(i!==data.poem.length)
-        ss.push(",");
-      else
-        ss.push(".");
       ss = ss.join("");
+
       if(ol!=="" && ss.indexOf(ol)==-1){
         ss = ol.concat(ss);
       }
-      document.getElementById("poem").insertAdjacentHTML( "afterend" ,"<p>" + ss +"</p>");
+      document.getElementById("poem").innerHTML+= "<p class='poemline'><span class='innertext'>" + ss +"</span></p>";
     }
   }
 }
