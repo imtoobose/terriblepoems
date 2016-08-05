@@ -16,11 +16,11 @@ function Markov(req, res, next){
     var innerarr= arr[i].lines;
     for(var j =0; j<innerarr.length; j++){
       var sentence= innerarr[j].replace(/[^a-z\s+]+/gi, '').split(' ');
+      if(sentence==' '||sentence=='') break;
       sentence[0]= sentence[0].toLowerCase();
       for(var k = 0 ; k<sentence.length-1; k++){
           sentence[k+1]= sentence[k+1].toLowerCase();
           seedarr.push(sentence[k]);
-          
           if(vnext!="" && vnext!==sentence[k]){
             if(dic[vnext]){
               dic[vnext].push(sentence[k]);
