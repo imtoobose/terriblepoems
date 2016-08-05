@@ -7,6 +7,7 @@ div.upblur {
   display: block;
   height: 15%;
   width: 100%;
+  background: -webkit-linear-gradient(bottom, transparent, #F9FBB2 70%);
   background: linear-gradient(0deg, transparent, #F9FBB2 70%);
   position: fixed;
   top: 0%;
@@ -18,6 +19,7 @@ div.blurfoot {
   display: block;
   height: 25%;
   width: 100%;
+  background: -webkit-linear-gradient(bottom, #F9FBB2 30%, transparent);
   background: linear-gradient(0deg, #F9FBB2 30%, transparent);
   position: fixed;
   bottom: 0%;
@@ -50,5 +52,3 @@ div.blurfoot {
 
 p:last-child {
   margin-bottom: 20px; }
-
-/*# sourceMappingURL=style.css.map */
