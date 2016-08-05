@@ -12,7 +12,6 @@ var
     getLines    = require('./public/getLines');
 
 function getDisplay(req, res, next){
-  console.log(res.locals.auth);
     res.jsonp({
       "poem": res.locals.output,
       "author": res.locals.auth
@@ -26,6 +25,4 @@ app.get('/', function(req, res){
   res.end();
 });
 
-app.listen(8080, function(){
-  console.log("Server started");
-});
+app.listen(process.env.PORT||8080);
