@@ -20,8 +20,6 @@ function getDisplay(req, res, next){
 
 app.get('/poem', getAuthor, getLines, Markov, getDisplay);
 app.use(express.static("webpage"));
-//app.set('views', 'templates');
-//app.set('view engine', 'pug');
 app.get('/', function(req, res){
   res.end();
 });

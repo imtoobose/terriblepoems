@@ -6,6 +6,8 @@ function getPoem(){
     printData(data);
   })
   .catch(function(e, xhr, response){
+    document.getElementById.innerHTML="",
+    document.getElementById.outerHTML="";
     document.getElementById("poem").innerHTML= "Looks like an error occurred :( Try again!";
   })
 }
