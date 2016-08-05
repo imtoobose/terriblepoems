@@ -1,6 +1,6 @@
 function getPoem(){
   qwest.setDefaultDataType('json');
-  qwest.get("http://localhost:8080/poem")
+  qwest.get("http://localhost:8080/poem?callback=?")
   .then(function(xhr, response){
     var data= JSON.parse(xhr.responseText);
     printData(data);

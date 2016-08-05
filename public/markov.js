@@ -10,7 +10,7 @@ function Markov(req, res, next){
   seedarr=[];
   var vnext="";
   var dic = {};
-
+  
   for (var i =0; i<arr.length; i++){
     var innerarr= arr[i].lines;
     for(var j =0; j<innerarr.length; j++){

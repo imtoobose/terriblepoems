@@ -12,14 +12,18 @@ var
     getLines    = require('./public/getLines');
 
 function getDisplay(req, res, next){
-    res.jsonp({
-      "poem": res.locals.output,
-      "author": res.locals.auth
-    })
+  res.jsonp({
+    "poem": res.locals.output,
+    "author": res.locals.auth
+  });
 }
 
+app.use(function(req, res, next){
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  res.setHeader("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type");
+  next();
+});
 app.get('/poem', getAuthor, getLines, Markov, getDisplay);
-
 //app.use(express.static("webpage"));
 app.get('/', function(req, res){
   res.end("Nothing to see here");
