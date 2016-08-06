@@ -16,7 +16,7 @@ var
     
 app.use(favicon(path.join(__dirname, 'public','favicon.ico'))); 
 app.get('/poem', getAuthor, getLines, getMarkov, createChain);
-app.use(express.static("webpage"));
+app.use(express.static("dist"));
 app.get('/', function(req, res){
   res.end();
 });

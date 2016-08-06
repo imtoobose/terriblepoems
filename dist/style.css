@@ -1,14 +1,14 @@
 body {
-  background: #F9FBB2;
-  color: #444554;
+  background: #FBFBFF;
+  color: #19323C;
   font-family: "Open Sans Condensed", sans-serif; }
 
 div.upblur {
   display: block;
   height: 15%;
   width: 100%;
-  background: -webkit-linear-gradient(bottom, transparent, #F9FBB2 70%);
-  background: linear-gradient(0deg, transparent, #F9FBB2 70%);
+  background: -webkit-linear-gradient(bottom, rgba(251, 251, 255, 0.05), #FBFBFF 70%);
+  background: linear-gradient(0deg, rgba(251, 251, 255, 0.05), #FBFBFF 70%);
   position: fixed;
   top: 0%;
   opacity: 1;
@@ -17,10 +17,10 @@ div.upblur {
 
 div.blurfoot {
   display: block;
-  height: 25%;
+  height: 18%;
   width: 100%;
-  background: -webkit-linear-gradient(bottom, #F9FBB2 30%, transparent);
-  background: linear-gradient(0deg, #F9FBB2 30%, transparent);
+  background: -webkit-linear-gradient(bottom, #FBFBFF 30%, rgba(251, 251, 255, 0.05));
+  background: linear-gradient(0deg, #FBFBFF 30%, rgba(251, 251, 255, 0.05));
   position: fixed;
   bottom: 0%;
   opacity: 1;
@@ -44,11 +44,11 @@ div.blurfoot {
     text-align: center; }
     .poem p.poemline span.innertext {
       display: inline-block;
-      border-left: solid #444554 2px;
+      border-left: solid #19323C 2px;
       padding-left: 5px;
       padding-right: 5px; }
       .poem p.poemline span.innertext:hover {
-        background: #F4D35E; }
+        background: #C1C1FF; }
 
 p:last-child {
   margin-bottom: 20px; }

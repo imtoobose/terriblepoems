@@ -10,9 +10,14 @@
   "author": "Saumitra Bose",
   "license": "MIT",
   "devDependencies": {
+    "bl": "^1.1.2",
     "express": "^4.14.0",
-    "request": "^2.74.0",
-    "bl": "^1.1.2"
+    "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^3.1.0",
+    "gulp-nodemon": "^2.1.0",
+    "gulp-ruby-sass": "^2.0.6",
+    "gulp-uglify": "^2.0.0",
+    "request": "^2.74.0"
   },
   "dependencies": {
     "bl": "^1.1.2",
