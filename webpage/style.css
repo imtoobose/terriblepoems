@@ -1,12 +1,13 @@
 body {
   background: #F9FBB2;
   color: #444554;
-  font-family: "Open Sans Condensed"; }
+  font-family: "Open Sans Condensed", sans-serif; }
 
 div.upblur {
   display: block;
   height: 15%;
   width: 100%;
+  background: -webkit-linear-gradient(bottom, transparent, #F9FBB2 70%);
   background: linear-gradient(0deg, transparent, #F9FBB2 70%);
   position: fixed;
   top: 0%;
@@ -18,6 +19,7 @@ div.blurfoot {
   display: block;
   height: 25%;
   width: 100%;
+  background: -webkit-linear-gradient(bottom, #F9FBB2 30%, transparent);
   background: linear-gradient(0deg, #F9FBB2 30%, transparent);
   position: fixed;
   bottom: 0%;
@@ -54,5 +56,3 @@ p:last-child {
 .errortext {
   padding: 0;
   margin: 0; }
-
-/*# sourceMappingURL=style.css.map */
