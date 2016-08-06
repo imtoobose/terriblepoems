@@ -39,6 +39,9 @@ function createMarkov(fin, res, next){
     else{
       if(dict[seed]){
         dict[seed].push(arr[i]);
+        if(seed.length<5 && arr[i].length>=5){
+          dict[seed].push(arr[i]);
+        } 
         seed= arr[i];
       }
       else{

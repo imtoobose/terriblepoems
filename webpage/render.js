@@ -1,4 +1,3 @@
-
 function randomInt(min,max)
 {
     return Math.floor(Math.random()*(max-min+1)+min);
@@ -6,7 +5,7 @@ function randomInt(min,max)
 
 function getPoem(){
   qwest.setDefaultDataType('json');
-  qwest.get("http://localhost:8080/poem")
+  qwest.get("./poem")
   .then(function(xhr, response){
     var data= JSON.parse(xhr.responseText);
     printData(data);
@@ -20,23 +19,45 @@ function getPoem(){
 
 function printData(data){
   document.getElementById("poem").innerHTML="";
-  document.getElementById("header-title").innerHTML="From the words of <span class='authorname'>"+data.author+"</span>";
-  var arr = data.poem.split(' ');
-  //console.log(arr);
-  var ss;
-  for(var i in arr){
+  document.getElementById("header-title").innerHTML= "From the words of <span class='authorname'>"+data.author+"</span>";
+  var 
+    arr      = data.poem.split(' '),
+    breakall = false,
+    ss, 
+    n;
+
+  for(var i =0; i<arr.length; i++){
     i= +i;
     ss= '';
     for(var j=0; j<= randomInt(5, 10); j++){
-      ss+= arr[i]+" ";
+      if(j===0 || arr[i]=='i'){
+        n= arr[i].split('');
+        if(/[a-z]/.test(n[0])){
+          try{
+            n[0]=n[0].toUpperCase();
+          }
+          catch(err){
+            n[0]=n[0];
+          }
+        }
+        n= n.join('');
+        ss+= n+" ";
+      }
+
+      else{
+        ss+=arr[i]+" ";
+      }
       i+=1;
-      if(i==arr.length) break;
+      if(i==arr.length){
+        breakall= true;
+        break;
+      }
     }
-    document.getElementById("poem").innerHTML+= "<p class='poemline'><span class='innertext'>" + ss +"</span></p>";
+    if(ss.length>=4)
+      document.getElementById("poem").innerHTML+= "<p class='poemline'><span class='innertext'>" + ss +"</span></p>";
+    if(breakall) break;
   }
 }
-
-//document.getElementById("poem").innerHTML+= "<p class='poemline'><span class='innertext'>" + ss +"</span></p>";
 
 (function(){
   document.getElementById("poem").innerHTML= "Loading";

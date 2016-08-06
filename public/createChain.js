@@ -5,7 +5,7 @@ module.exports = function(req, res, next){
     initseed = null;
 
   for(var i in dict){
-    if(i==' '|| i==' '|| dict[i].length<=1){
+    if(i==' '|| i==' '|| dict[i].length<=2){
       continue;
     }
 
@@ -13,19 +13,19 @@ module.exports = function(req, res, next){
     initseed = i;
     break;
   }
+
   if(seed){
     var 
-      max  = 200,
+      max  = 300,
       sent = '';
 
     for(i=0; i<max; i++){
       if(!dict[seed]|| dict[seed].length===0)
-        seed=initseed;
+        seed = initseed;
       else{
         var 
           ss   = dict[seed],
           rand = ss[Math.floor(Math.random()*ss.length)];
-
         sent+= rand+' ';
         seed= rand;
       }
