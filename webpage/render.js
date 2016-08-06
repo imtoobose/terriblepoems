@@ -7,13 +7,14 @@ function getPoem(){
   qwest.setDefaultDataType('json');
   qwest.get("./poem")
   .then(function(xhr, response){
-    var data= JSON.parse(xhr.responseText);
-    printData(data);
+    if(200<=xhr.status<300)
+      printData(response);
+    else throw({"error": "failed to connect to server"})
   })
   .catch(function(e, xhr, response){
     console.log(e);
     document.getElementById("poem").innerHTML="",
-    document.getElementById("poem").innerHTML= "Looks like an error occurred :( Try again!";
+    document.getElementById("poem").innerHTML= "<p class='errortext'>Oh no, something broke!</p> <p class='errortext'>Try again after some time</p>";
   })
 }
 
@@ -61,11 +62,11 @@ function printData(data){
 
 (function(){
   document.getElementById("poem").innerHTML= "Loading";
-  if(qwest){
+  try{
     getPoem();
   }
-  else{
-    document.getElementById("poem").innerHTML="An error occurred";
+  catch(e){
+    document.getElementById("poem").innerHTML="<p class='errortext'>Oh no, something broke!</p> <p class='errortext'> Try again after some time </p>";
   }
 
   function checkVisible(elm) {
@@ -75,7 +76,6 @@ function printData(data){
   }
 
   var tit= document.getElementById("header-title");
-
   window.onscroll = function() {
     var upblur= document.getElementById("upblur");
     if(checkVisible(tit)){
