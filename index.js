@@ -7,18 +7,12 @@ var
 
 /*---App modules---*/
 var
-    Markov      = require('./public/markov'),
     getAuthor   = require('./public/getAuthor'),
-    getLines    = require('./public/getLines');
+    getLines    = require('./public/getLines'),
+    getMarkov   = require('./public/newmarkov'),
+    createChain = require('./public/createChain');
 
-function getDisplay(req, res, next){
-  res.jsonp({
-    "poem": res.locals.output,
-    "author": res.locals.auth
-  });
-}
-
-app.get('/poem', getAuthor, getLines, Markov, getDisplay);
+app.get('/poem', getAuthor, getLines, getMarkov, createChain);
 app.use(express.static("webpage"));
 app.get('/', function(req, res){
   res.end();

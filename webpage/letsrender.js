@@ -1,6 +1,6 @@
 function getPoem(){
   qwest.setDefaultDataType('json');
-  qwest.get("https://really-awful-poems.herokuapp.com/poem")
+  qwest.get("http://localhost:8080/poem")
   .then(function(xhr, response){
     var data= JSON.parse(xhr.responseText);
     printData(data);
