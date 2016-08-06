@@ -12,7 +12,7 @@ function cleanup(arr, res, next, callback){
         continue;
       }
       else{
-        var sent= vals[j].replace(/\.|'|"|\?|:|\!|,|;|\(|\)/g, '').replace(/-/g, ' ').trim().toLowerCase();
+        var sent= vals[j].replace(/\.|'|"|\?|:|\!|,|;|\(|\)|[0-9]|\[|\]/g, '').replace(/-|—/g, ' ').trim().toLowerCase();
         fin+= sent+' ';
       }
     }
