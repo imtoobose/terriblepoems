@@ -1,6 +1,12 @@
+
+function randomInt(min,max)
+{
+    return Math.floor(Math.random()*(max-min+1)+min);
+}
+
 function getPoem(){
   qwest.setDefaultDataType('json');
-  qwest.get("https://really-awful-poems.herokuapp.com/poem")
+  qwest.get("http://localhost:8080/poem")
   .then(function(xhr, response){
     var data= JSON.parse(xhr.responseText);
     printData(data);
@@ -15,33 +21,22 @@ function getPoem(){
 function printData(data){
   document.getElementById("poem").innerHTML="";
   document.getElementById("header-title").innerHTML="From the words of <span class='authorname'>"+data.author+"</span>";
-  var ol = "";
-  for(var i in data.poem){
-    data.poem[i]= data.poem[i].trim();
-    if(data.poem[i]=='' || data.poem[i]==" " || data.poem[i] == "the"|| data.poem[i]=="a" || data.poem[i]=="an"){
-      continue;
+  var arr = data.poem.split(' ');
+  //console.log(arr);
+  var ss;
+  for(var i in arr){
+    i= +i;
+    ss= '';
+    for(var j=0; j<= randomInt(5, 10); j++){
+      ss+= arr[i]+" ";
+      i+=1;
+      if(i==arr.length) break;
     }
-
-    else{
-      if(data.poem[i].split(" ").length==1){
-        ol = data.poem[i];
-        continue;
-      }
-      else{
-        ol = "";
-      }
-
-      var ss = (data.poem[i].split(""));
-      ss[0]  = ss[0].toUpperCase();
-      ss = ss.join("");
-
-      if(ol!=="" && ss.indexOf(ol)==-1){
-        ss = ol.concat(ss);
-      }
-      document.getElementById("poem").innerHTML+= "<p class='poemline'><span class='innertext'>" + ss +"</span></p>";
-    }
+    document.getElementById("poem").innerHTML+= "<p class='poemline'><span class='innertext'>" + ss +"</span></p>";
   }
 }
+
+//document.getElementById("poem").innerHTML+= "<p class='poemline'><span class='innertext'>" + ss +"</span></p>";
 
 (function(){
   document.getElementById("poem").innerHTML= "Loading";
