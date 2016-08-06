@@ -14,7 +14,7 @@ var
     getMarkov   = require('./public/newmarkov'),
     createChain = require('./public/createChain');
     
-app.use(favicon(path.join(__dirname, 'public','favicon.ico'))); 
+//app.use(favicon(path.join(__dirname, 'public','favicon.ico'))); 
 app.get('/poem', getAuthor, getLines, getMarkov, createChain);
 app.use(express.static("dist"));
 app.get('/', function(req, res){
