@@ -43,10 +43,7 @@ div.blurfoot {
     display: block;
     text-align: center; }
     .poem p.poemline span.innertext {
-      display: inline-block;
-      border-left: solid #19323C 2px;
-      padding-left: 5px;
-      padding-right: 5px; }
+      display: inline-block; }
       .poem p.poemline span.innertext:hover {
         background: #C1C1FF; }
 
@@ -56,3 +53,12 @@ p:last-child {
 .errortext {
   padding: 0;
   margin: 0; }
+
+span.authorname {
+  border-bottom: solid rgba(25, 50, 60, 0.7) 2px;
+  color: rgba(25, 50, 60, 0.7);
+  cursor: pointer;
+  -webkit-transition: all 0.2s linear;
+  transition: all 0.2s linear; }
+  span.authorname:hover {
+    color: #19323C; }

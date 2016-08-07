@@ -50,9 +50,6 @@ div.blurfoot{
     text-align:center;
     & span.innertext{
       display:inline-block;
-      border-left: solid $fontcolor 2px;
-      padding-left: 5px;
-      padding-right: 5px;
       &:hover{
         background:#C1C1FF;
       }
@@ -67,4 +64,14 @@ p:last-child{
 .errortext{
   padding: 0;
   margin: 0;
+}
+
+span.authorname{
+  border-bottom: solid fade-out($fontcolor, 0.3) 2px;
+  color: fade-out($fontcolor, 0.3);
+  cursor: pointer;
+  transition: all 0.2s linear;
+  &:hover{
+    color:$fontcolor;
+  }
 }

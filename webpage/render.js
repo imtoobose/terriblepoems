@@ -10,12 +10,30 @@ function randomInt(min,max)
     return Math.floor(Math.random()*(max-min+1)+min);
 }
 
+function addClick(){
+  var actual = "William Shakespeare";
+  document.getElementById("author").addEventListener('click', function(){
+    document.getElementById("poem").innerHTML= "Loading";
+    document.getElementById("header-title").innerHTML="";
+    getPoem();
+  });
+
+  document.getElementById("author").addEventListener('mouseenter', function(){
+    actual= this.innerHTML;
+    this.innerHTML="Fetch Another One ?";
+  });
+
+  document.getElementById("author").addEventListener("mouseout", function(){
+    this.innerHTML=actual;
+  });
+}
+
 function getPoem(){
   qwest.setDefaultDataType('json');
   qwest.get("./shakespeare")
   .then(function(xhr, response){
     if(200<=xhr.status<300){
-      printData(response);
+      printData(response, addClick);
     }
     else throw({"error": "failed to connect to server"})
   })
@@ -26,9 +44,9 @@ function getPoem(){
   })
 }
 
-function printData(data){
+function printData(data, callback){
   document.getElementById("poem").innerHTML="";
-  document.getElementById("header-title").innerHTML= "From the words of <span class='authorname'>"+data.author+"</span>";
+  document.getElementById("header-title").innerHTML= "From the words of <span class='authorname' id='author'>"+data.author+"</span>";
   var 
     arr      = data.poem.split(' '),
     breakall = false,
@@ -66,6 +84,7 @@ function printData(data){
       document.getElementById("poem").innerHTML+= "<p class='poemline'><span class='innertext'>" + ss +"</span></p>";
     if(breakall) break;
   }
+  callback();
 }
 
 (function(){
