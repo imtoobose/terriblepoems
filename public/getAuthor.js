@@ -4,7 +4,7 @@ var fs = require('fs'),
 
 
 function getAuthor(req, res, next){
-  fs.createReadStream(path.join(__dirname, 'authorsdb.txt'))
+  fs.createReadStream(path.join(__dirname,'data','authorsdb.txt'))
     .pipe(bl(function(err, data){
       if(!err){
         var auths    = data.toString().split(','),

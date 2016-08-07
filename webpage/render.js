@@ -12,10 +12,11 @@ function randomInt(min,max)
 
 function getPoem(){
   qwest.setDefaultDataType('json');
-  qwest.get("./poem")
+  qwest.get("./shakespeare")
   .then(function(xhr, response){
-    if(200<=xhr.status<300)
+    if(200<=xhr.status<300){
       printData(response);
+    }
     else throw({"error": "failed to connect to server"})
   })
   .catch(function(e, xhr, response){
