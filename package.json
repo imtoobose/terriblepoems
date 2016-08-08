@@ -1,6 +1,6 @@
 {
   "name": "markovpoems",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Return a random poem with Markov's Chains",
   "main": "index.js",
   "scripts": {
